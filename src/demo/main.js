@@ -13,9 +13,9 @@ vimeoEmbed.config(['$routeProvider', function($routeProvider) {
 
 
 vimeoEmbed.controller('MainController', function ($scope) {
-    // have a video ID
-    $scope.theBestVideo = 'sMKoNBRZM1M';
+    // Use an id
+    $scope.id = '30509290';
 
     // or a URL
-    $scope.anotherGoodOne = 'https://www.youtube.com/watch?v=18-xvIjH8T4';
+    $scope.url = 'http://vimeo.com/30509290';
 });

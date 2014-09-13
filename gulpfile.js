@@ -4,10 +4,7 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
  express = require('express'),
    gutil = require('gulp-util'),
-    path = require('path'),
-serveStatic = require('serve-static');
-
-build = 'dist/';
+    path = require('path');
 
 gulp.task('test', function () {
     return gulp.src([
@@ -29,15 +26,13 @@ gulp.task('dist', function () {
         .pipe(rename(function (path) {
             path.basename += '.min';
         }))
-        .pipe(gulp.dest(build));
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('host', function () {
     var app = express(),
-       port = 8888,
-      serve = serveStatic('src/', {'index': ['index.html']});
-
-    app.use(serve);
+       port = 8888;
+    app.use(express.static(__dirname + '/src/'));
     app.listen(port, function() {
         gutil.log('Listening on', port);
     });
