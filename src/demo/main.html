@@ -1,8 +1,9 @@
 <h1>Vimeo Player</h1>
-<p>video url: {{url}}</p>
-<p>video id {{id}}</p>
 
-<vimeo-video video-url="url"></vimeo-video>
+<vimeo-video video-url="url" player-width="640" player-height="360" api="1" id="video1"></vimeo-video>
 
-<vimeo-video video-url="'https://vimeo.com/103384798'" player-width="720" player-height="405"></vimeo-video>
-<vimeo-video video-url="'https://vimeo.com/97564754'"></vimeo-video>
+<vimeo-video video-id="'103384798'" player-width="720" player-height="405" id="video2"></vimeo-video>
+
+<!-- <div><a class="fa fa-play" ng-click="play('103384798', 'video2')">Play</a></div> -->
+
+<vimeo-video video-url="'https://vimeo.com/97564754'" player-width="640" player-height="360" query="{color: 'f00'}" id="video3"></vimeo-video>

@@ -22,13 +22,6 @@ Things to do
 | autopause |	Pause this video automatically when another one plays. | **true**   |
 | xhtml |	Make the embed code XHTML compliant. | **false**   | -->
 
-
-
-
-
-
-
-
 [1]:https://angularjs.org
 [2]:https://developer.vimeo.com/apis/oembed
 [3]:https://developer.vimeo.com/player/js-api
