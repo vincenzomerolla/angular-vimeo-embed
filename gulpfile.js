@@ -4,7 +4,9 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
  express = require('express'),
    gutil = require('gulp-util'),
-    path = require('path');
+    path = require('path'),
+stripDebug = require('gulp-strip-debug'),
+ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('test', function () {
     return gulp.src([
@@ -22,6 +24,8 @@ gulp.task('test', function () {
 
 gulp.task('dist', function () {
     gulp.src('src/angular-vimeo-embed.js')
+        .pipe(ngAnnotate())
+        .pipe(stripDebug())
         .pipe(uglify())
         .pipe(rename(function (path) {
             path.basename += '.min';

@@ -1,25 +1,25 @@
 'use strict';
 
-var vimeoEmbed = angular.module('vimeoEmbed', ['vimeo-embed', 'ngRoute']);
+angular.module('vimeoEmbedExample', ['vimeoEmbed', 'ngRoute'])
 
-vimeoEmbed.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider
    .when('/', {
     templateUrl: 'demo/main.html',
-    controller: 'MainController'
+    controller: 'MainController',
+    controllerAs: 'main'
   })
   .otherwise('/');
-}]);
+}])
 
-
-vimeoEmbed.controller('MainController', function ($scope, $document, $window) {
+.controller('MainController', function ($scope, $document, $window) {
     // Use an id
-    $scope.id = '30509290';
+    this.id = '103384798';
 
     // or a URL
-    $scope.url = 'https://vimeo.com/76979871';
+    this.url = 'https://vimeo.com/76979871';
 
-    $scope.play = function(videoId, playerId) {
+    this.play = function(videoId, playerId) {
       var target = 'http://player.vimeo.com/video/'+videoId+'?player_id='+playerId+'api=1';
       console.log(target);
       var msg = JSON.stringify({ method: 'play' });

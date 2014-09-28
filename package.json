@@ -1,6 +1,6 @@
 {
   "name": "angular-vimeo-embed",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A simple AngularJS directive to embed vimeo videos.",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,8 @@
     "express": "^4.9.5",
     "gulp-util": "^3.0.1",
     "karma": "^0.12.23",
-    "gulp-karma": "0.0.4"
+    "gulp-karma": "0.0.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-strip-debug": "^1.0.1"
   }
 }
