@@ -27,7 +27,7 @@ angular.module('myApp', ['vimeoEmbed']);
 
 Now you can use the directive in your app! It can be used as an element or attribute. It **must** have an id.
 
-####Below are some examples of how you can use it:
+
 ```html
 <!-- Include by id -->
 <vimeo-video player-id="video1" video-id="103384798"></vimeo-video>
@@ -48,11 +48,7 @@ Available options are listed [here][2]. If none are passed, the embedded video w
 
 
 
-
-
-
-TODO
-------------
+##TODO
 - ~~Implement the [oEmbed API][2] for embedding the video.~~
 - Implement the [Javascript API][3] to control the embedded player
 
