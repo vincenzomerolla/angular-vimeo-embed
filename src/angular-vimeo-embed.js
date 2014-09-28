@@ -16,8 +16,10 @@ angular.module('vimeoEmbed', [])
           api: '='
       },
       link: function (scope, element, attrs, ctrl) {
+        var playerId = attrs.playerId || element[0].id;
+        element[0].id = playerId;
+
         var videoUrl = scope.videoId ? 'https://vimeo.com/' + scope.videoId : scope.videoUrl,
-            playerId = attrs.playerId || element[0].id,
             params = '?url=' + encodeURIComponent(videoUrl) + '&callback=JSON_CALLBACK' + '&player_id=' + playerId,
             options = scope.playerOpts || null;
 
