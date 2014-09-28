@@ -14,7 +14,7 @@ $ bower install --save angular-vimeo-embed
 
 Include the file in your HTML
 ```html
-<script src="angular-vimeo-embed.min.js"></script>
+<script src="path/to/angular-vimeo-embed.min.js"></script>
 ```
 
 And add a dependency to the module
