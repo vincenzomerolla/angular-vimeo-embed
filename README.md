@@ -27,6 +27,7 @@ angular.module('myApp', ['vimeoEmbed']);
 
 Now you can use the directive in your app! It can be used as an element or attribute. It **must** have an id.
 
+**Demo:** http://jsbin.com/loxaj/6/
 
 ```html
 <!-- Include by id -->
