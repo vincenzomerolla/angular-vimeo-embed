@@ -5,6 +5,7 @@
     "Vincenzo Merolla <vincenzomerolla@aol.com>"
   ],
   "description": "A simple AngularJS directive to embed vimeo videos.",
+  "main": "dist/angular-vimeo-embed.min.js",
   "license": "MIT",
   "keywords": [
     "angular",
