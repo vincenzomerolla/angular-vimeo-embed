@@ -8,18 +8,6 @@ var gulp = require('gulp'),
 stripDebug = require('gulp-strip-debug'),
 ngAnnotate = require('gulp-ng-annotate');
 
-gulp.task('test', function () {
-    return gulp.src([
-        'bower_components/angular/angular.js',
-        'bower_components/angular-mocks/angular-mocks.js',
-        'src/angular-youtube-embed.js',
-        'test/unit/**/*.js'
-    ])
-    .pipe(karma({
-        configFile: 'test/config/karma.conf.js',
-        action: 'watch'
-    }));
-});
 
 
 gulp.task('dist', function () {
@@ -42,4 +30,4 @@ gulp.task('host', function () {
     });
 });
 
-gulp.task('default', ['dist', 'host', 'test']);
+gulp.task('default', ['host']);
