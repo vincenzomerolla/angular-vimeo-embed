@@ -47,22 +47,21 @@ angular.module('vimeoEmbed', [])
 })
 
 .factory('VimeoService', function ($q, $http) {
-  var service = {};
   var endpoint = 'https://www.vimeo.com/api/oembed.json';
 
-  service.oEmbed = function (params) {
-    console.log(endpoint + params);
-    var d = $q.defer();
+  return {
+    oEmbed: function (params) {
+      console.log(endpoint + params);
+      var d = $q.defer();
 
-    $http.jsonp(endpoint + params).success(function(data) {
-      d.resolve(data);
-    }).error(function(error) {
-      console.log(error);
-      d.reject('Oops! It looks like there was an error!');
-    });
+      $http.jsonp(endpoint + params).success(function(data) {
+        d.resolve(data);
+      }).error(function(error) {
+        console.log(error);
+        d.reject('Oops! It looks like there was an error!');
+      });
 
-    return d.promise;
-  };
-
-  return service;
+      return d.promise;
+    };
+  }
 });
