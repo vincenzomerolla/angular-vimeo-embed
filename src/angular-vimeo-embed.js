@@ -62,6 +62,6 @@ angular.module('vimeoEmbed', [])
       });
 
       return d.promise;
-    };
-  }
+    }
+  };
 });

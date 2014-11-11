@@ -1,6 +1,6 @@
 {
   "name": "angular-vimeo-embed",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A simple AngularJS directive to embed vimeo videos.",
   "main": "dist/angular-vimeo-embed.min.js",
   "scripts": {
