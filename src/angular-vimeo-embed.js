@@ -2,7 +2,7 @@
 
 angular.module('vimeoEmbed', [])
 
-.directive('vimeoVideo', function () {
+.directive('vimeoVideo', function (VimeoService) {
 
     return {
       restrict: 'EA',
@@ -35,39 +35,34 @@ angular.module('vimeoEmbed', [])
         }
 
         console.log(params);
-        ctrl.getVideo(params).then(function (data) {
+        VimeoService.oEmbed(params).then(function (data) {
           element.html(data.html);
         }, function (data) {
           element.html('<div>' + data + '</div>');
         });
 
 
-      },
-      controller: function($scope, $q, VimeoService) {
-        this.getVideo = function(params) {
-          var d = $q.defer();
-
-          VimeoService.oEmbed(params).success(function(data) {
-            d.resolve(data);
-          }).error(function(error) {
-            console.log(error);
-            d.reject('Oops! It looks like there was an error!');
-          });
-
-          return d.promise;
-        };
       }
     };
 })
 
-.factory('VimeoService', function($http) {
-  var VimeoService = {},
-      endpoint = 'https://www.vimeo.com/api/oembed.json';
+.factory('VimeoService', function ($q, $http) {
+  var service = {};
+  var endpoint = 'https://www.vimeo.com/api/oembed.json';
 
-  VimeoService.oEmbed = function (params) {
+  service.oEmbed = function (params) {
     console.log(endpoint + params);
-    return $http.jsonp(endpoint + params);
+    var d = $q.defer();
+
+    $http.jsonp(endpoint + params).success(function(data) {
+      d.resolve(data);
+    }).error(function(error) {
+      console.log(error);
+      d.reject('Oops! It looks like there was an error!');
+    });
+
+    return d.promise;
   };
 
-  return VimeoService;
+  return service;
 });
