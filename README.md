@@ -25,9 +25,9 @@ angular.module('myApp', ['vimeoEmbed']);
 
 ##Usage
 
-Now you can use the directive in your app! It can be used as an element or attribute. It **must** have an id.
+Now you can use the directive in your app! It can be used as an element or attribute. It **must** have a player-id.
 
-**Demo:** http://jsbin.com/loxaj/6/
+[Demo][4]
 
 ```html
 <!-- Include by id -->
@@ -57,7 +57,7 @@ Available options are listed [here][2]. If none are passed, the embedded video w
 ##License
 The MIT License
 
-Copyright (c) 2014 Vincenzo Merolla
+Copyright (c) 2014-2015 Vincenzo Merolla
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -80,3 +80,4 @@ THE SOFTWARE.
 [1]:https://angularjs.org
 [2]:https://developer.vimeo.com/apis/oembed
 [3]:https://developer.vimeo.com/player/js-api
+[4]:https://vincenzomerolla.github.io/angular-vimeo-embed

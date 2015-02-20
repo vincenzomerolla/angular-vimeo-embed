@@ -8,80 +8,67 @@
   'use strict';
 
   angular.module('vimeoEmbed', [])
+  .directive('vimeoVideo', function (VimeoService) {
 
-  .directive('vimeoVideo', function () {
+    return {
+      restrict: 'EA',
+      replace: true,
+      scope: {
+          videoId: '=',
+          videoUrl: '=',
+          playerOpts: '=',
+          playerHeight: '=',
+          playerWidth: '=',
+          api: '='
+      },
+      link: function (scope, element, attrs, ctrl) {
+        var playerId = attrs.playerId || element[0].id;
+        element[0].id = playerId;
 
-      return {
-        restrict: 'EA',
-        replace: true,
-        scope: {
-            videoId: '=',
-            videoUrl: '=',
-            playerOpts: '=',
-            playerHeight: '=',
-            playerWidth: '=',
-            api: '='
-        },
-        link: function (scope, element, attrs, ctrl) {
-          var playerId = attrs.playerId || element[0].id;
-          element[0].id = playerId;
+        var options = scope.playerOpts;
 
-          var videoUrl = scope.videoId ? 'https://vimeo.com/' + scope.videoId : scope.videoUrl,
-              options = scope.playerOpts || null;
+        var params = {
+          url: scope.videoId ? 'https://vimeo.com/' + scope.videoId : scope.videoUrl,
+          callback: 'JSON_CALLBACK',
+          player_id: playerId
+        };
 
-          var params = {
-            url: encodeURIComponent(videoUrl),
-            callback: 'JSON_CALLBACK',
-            player_id:  playerId
-          };
+        if (scope.playerWidth) params['width'] = scope.playerWidth;
+        if (scope.playerHeight) params['height'] = scope.playerHeight;
+        if (scope.api) params['api'] = 1;
 
-          if (scope.playerWidth) { params['width'] = scope.playerWidth; }
-          if (scope.playerHeight) { params['height'] = scope.playerHeight; }
-          if (scope.api) { params['api'] = 1; }
-
-
-          //If params obj is passed, loop through object keys and append query param
-          if (options)  {
-            for (var prop in options) {
-              params[prop] = options[prop];
-            }
+        //If params obj is passed, loop through object keys and append query param
+        if (options)  {
+          for (var prop in options) {
+            if (options.hasOwnProperty(prop)) params[prop] = options[prop];
           }
-
-          console.log(params);
-          ctrl.getVideo(params).then(function (data) {
-            element.html(data.html);
-          }, function (data) {
-            element.html('<div>' + data + '</div>');
-          });
-
-
-        },
-        controller: function($q, VimeoService) {
-          this.getVideo = function(params) {
-            var d = $q.defer();
-
-            VimeoService.oEmbed(params).success(function(data) {
-              d.resolve(data);
-            }).error(function(error) {
-              console.log(error);
-              d.reject('Oops! It looks like there was an error!');
-            });
-
-            return d.promise;
-          };
         }
-      };
+
+        VimeoService.oEmbed(params).then(function (data) {
+          element.html(data.html);
+        }, function () {
+          element.html('<div>Failed to retreive video.</div>');
+        });
+      }
+    };
   })
 
-  .factory('VimeoService', function($http) {
-    var VimeoService = {},
-        endpoint = 'https://www.vimeo.com/api/oembed.json';
+  .factory('VimeoService', function ($http) {
+    var endpoint = 'https://www.vimeo.com/api/oembed.json';
 
-    VimeoService.oEmbed = function (params) {
-      console.log(endpoint + params);
-      return $http.jsonp(endpoint + params);
+    return {
+      oEmbed: function (params) {
+        return $http.jsonp(endpoint, {params: params}).then(function(res) {
+          return res.data;
+        });
+      }
     };
-
-    return VimeoService;
   });
 })(window, window.angular);
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 {
   "name": "angular-vimeo-embed",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "authors": [
     "Vincenzo Merolla <vincenzomerolla@aol.com>"
   ],
@@ -23,11 +23,11 @@
     ".editorconfig",
     "package.json",
     "gulpfile.js",
-    "src/demo/",
+    "dist/index.html",
     "src/index.html"
   ],
-  "devDependencies": {
-    "angular": "~1.2.24",
-    "angular-route": "~1.2.24"
+  "dependencies": {
+    "angular": "latest",
+    "bootstrap": "~3.3.2"
   }
 }
