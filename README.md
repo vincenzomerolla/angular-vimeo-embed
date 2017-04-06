@@ -3,7 +3,7 @@
 This is a simple [AngularJS][1] directive to embed Vimeo videos easily onto your website.
 
 
-##Installation
+## Installation
 
 The easiest way to get the file in your project is by running the following
 command:
@@ -23,7 +23,7 @@ angular.module('myApp', ['vimeoEmbed']);
 ```
 
 
-##Usage
+## Usage
 
 Now you can use the directive in your app! It can be used as an element or attribute. It **must** have a player-id.
 
@@ -49,15 +49,15 @@ Available options are listed [here][2]. If none are passed, the embedded video w
 
 
 
-##TODO
+## TODO
 - ~~Implement the [oEmbed API][2] for embedding the video.~~
 - Implement the [Javascript API][3] to control the embedded player
 
 
-##License
+## License
 The MIT License
 
-Copyright (c) 2014-2015 Vincenzo Merolla
+Copyright (c) 2014-2017 Vincenzo Merolla
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
